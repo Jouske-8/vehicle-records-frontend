@@ -26,17 +26,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Web3Provider>
-      <RolesProvider>
-        <html lang="en">
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Web3Provider>
+          <RolesProvider>
             <Header />
             {children}
-          </body>
-        </html>
-      </RolesProvider>
-    </Web3Provider>
+          </RolesProvider>
+        </Web3Provider>
+      </body>
+    </html>
   );
 }

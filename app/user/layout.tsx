@@ -1,7 +1,7 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { UserSidebar } from "@/components/UserSidebar";
 
-export default function RootLayout({
+export default function RequestLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
