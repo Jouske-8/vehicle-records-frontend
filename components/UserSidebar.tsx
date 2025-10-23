@@ -20,18 +20,25 @@ export function UserSidebar() {
         <SidebarGroup />
         <SidebarGroupLabel>Application</SidebarGroupLabel>
         <SidebarGroupContent>
-            <SidebarMenu>
-                <SidebarMenuItem>
-                    <SidebarMenuButton>
-                        <Link href="/user/request-vehicle">Vehicle Registration</Link>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
-                                <SidebarMenuItem>
-                    <SidebarMenuButton>
-                        <Link href="/user/view-requests">View Vehicle Requests</Link>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
-            </SidebarMenu>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Link href="/user/request-vehicle">Vehicle Registration</Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Link href="/user/view-requests">View Vehicle Requests</Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Link href="/user/view-certificates">
+                  View Vehicle Certificates
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
         </SidebarGroupContent>
         <SidebarGroup />
       </SidebarContent>

@@ -47,3 +47,26 @@ export const approveVehicleRegistration = async (requestId: string, certificateI
         throw error; // optionally re-throw to handle upstream
     }
 };
+
+export const rejectVehicleRegistration = async (requestId: string, denyReason: string) => {
+    try {
+        const { walletClient, account } = await getWalletClient();
+        const publicClient = getPublicClient();
+        if (!publicClient || !account) {
+            throw new Error("Public client or account not available");
+        }
+        const { request } = await publicClient.simulateContract({
+            account: account,
+            address: "0xc766710e32112df1Eb266C90F5D8aEd2e58784ea",
+            abi: VehicleRegistryJson.abi,
+            functionName: "denyVehicleRegistration",
+            args: [requestId, denyReason],
+        });
+        const hash = await walletClient.writeContract(request);
+        console.log("Transaction hash:", hash);
+        return hash; // optionally return the hash
+    } catch (error) {
+        console.error("Error rejecting vehicle registration:", error);
+        throw error; // optionally re-throw to handle upstream
+    }
+}
