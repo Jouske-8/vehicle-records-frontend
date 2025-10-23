@@ -1,4 +1,4 @@
-import { fetchVehicleRequests } from "@/lib/vehicleReg";
+import { fetchVehicleRequests } from "@/lib/registration";
 import Link from "next/link";
 export default async function RegRequestsPage() {
   // This runs on the server

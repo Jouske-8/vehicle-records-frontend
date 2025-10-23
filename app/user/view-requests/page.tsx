@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchVehicleRequests } from "@/lib/vehicleReg";
 import { useAccount } from "wagmi";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
 
 interface VehicleRequest {
   requestId: bigint;
@@ -20,7 +21,10 @@ export default function MyVehicleRequests() {
       setLoading(true);
       try {
         if (address) {
-          const requests = await fetchVehicleRequests();
+          const response = await fetch("http://localhost:4000/api/vehicle-events/requested");
+          const data = await response.json();
+          const requests = data as VehicleRequest[];
+          console.log(requests)
           const myRequests = requests.filter((req) => req.owner.toLowerCase() === address.toLowerCase());
           setRequests(myRequests);
         }
@@ -42,35 +46,9 @@ export default function MyVehicleRequests() {
       {!loading && requests.length === 0 && (
         <p>No requests found in the last 100,000 blocks.</p>
       )}
-
-      <ul className="flex flex-col gap-4 w-full max-w-md">
-        {requests.map((req) => (
-          <li
-            key={req.requestId.toString()}
-            className="border p-2 rounded-md bg-gray-50"
-          >
-            <p>
-              <strong>Request ID:</strong> {req.requestId.toString()}
-            </p>
-            <p>
-              <strong>Requester:</strong> {req.requester}
-            </p>
-            <p>
-              <strong>Owner:</strong> {req.owner}
-            </p>
-            <p>
-              <strong>IPFS Hash:</strong> {req.regIpfsHash}
-            </p>
-            <a
-              href={`https://ipfs.io/ipfs/${req.regIpfsHash}`}
-              target="_blank"
-              className="text-blue-600 underline"
-            >
-              View Documents
-            </a>
-          </li>
-        ))}
-      </ul>
+      {!loading && requests.length > 0 &&
+        <DataTable columns={columns} data={requests} />
+      }
     </main>
   );
 }
