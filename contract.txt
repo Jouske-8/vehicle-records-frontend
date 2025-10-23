@@ -1,0 +1,2 @@
+VehicleRegistryModule#VehicleRegistry - 0xc766710e32112df1Eb266C90F5D8aEd2e58784ea
+VehicleRegistryModule#RoleRequestManager - 0xc5F4DE9938a519489e51D1d2a9B64610244901a3
