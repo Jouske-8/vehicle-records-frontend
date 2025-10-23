@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { walletClient, publicClient } from "@/utils/viemClient";
+import { Button } from "@/components/ui/button";
+import VehicleRegistryJson from '@/abi/VehicleRegistry.json'
+import { account } from "@/utils/viemClient";
 
 export default function RequestVehiclePage() {
   const [addressProof, setAddressProof] = useState<File>();
@@ -10,6 +14,22 @@ export default function RequestVehiclePage() {
   const [uploading, setUploading] = useState(false);
   const [ipfsHash, setIpfsHash] = useState("");
   const [url, setUrl] = useState("");
+
+  const handleVehicleRegistration = (ipfsHash: string) => async () => {
+    try {
+        const { request } = await publicClient.simulateContract({
+            account: account,
+            address: '0xc766710e32112df1Eb266C90F5D8aEd2e58784ea',
+            abi: VehicleRegistryJson.abi,
+            functionName: 'requestVehicleRegistration',
+            args: [ipfsHash, account],
+        });
+        const hash = await walletClient.writeContract(request);
+        console.log('Transaction hash:', hash);
+    } catch (error) {
+        console.error("Error registering vehicle:", error);
+    }
+  }
 
   const handleFileChange =
     (setter: (file: File) => void) =>
@@ -88,6 +108,7 @@ export default function RequestVehiclePage() {
               </ul>
             </>
           )}
+          <Button onClick={handleVehicleRegistration(ipfsHash)}>Send Vehicle Registration</Button>
         </div>
       )}
     </main>
