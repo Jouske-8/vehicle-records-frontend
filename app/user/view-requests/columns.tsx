@@ -11,7 +11,7 @@ export const columns: ColumnDef<VehicleRequest>[] = [
       return (
         <div className="flex gap-4 items-center">
             <p>{row.original.requestId}</p>
-          <Link className="bg-blue-300 py-2 px-4 rounded-2xl" href={`/requests/${row.original.requestId}`}>View</Link>
+          <Link className="bg-blue-300 py-2 px-4 rounded-2xl" href={`/user/view-requests/${row.original.requestId}`}>View</Link>
         </div>
       );
     },

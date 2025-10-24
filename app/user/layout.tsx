@@ -7,7 +7,7 @@ export default function RequestLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-full w-full relative">
+    <div className="flex relative">
       <SidebarProvider>
         <UserSidebar />
         <SidebarTrigger />

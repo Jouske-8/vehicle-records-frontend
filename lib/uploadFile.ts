@@ -2,20 +2,16 @@ export interface UploadFilesResult {
   ipfsHash: string;
   url: string;
 }
+
 /**
- * Upload one or more files to a specified endpoint.
- * @param files - Record of file key -> File object
+ * Upload a FormData object to the server.
+ * @param formData - The FormData containing files
  * @param endpoint - API endpoint URL (default: "/api/files")
  */
 export async function uploadFilesToServer(
-  files: Record<string, File>,
+  formData: FormData,
   endpoint: string,
 ): Promise<UploadFilesResult> {
-  const formData = new FormData();
-  for (const [key, file] of Object.entries(files)) {
-    formData.append(key, file);
-  }
-
   const response = await fetch(endpoint, {
     method: "POST",
     body: formData,

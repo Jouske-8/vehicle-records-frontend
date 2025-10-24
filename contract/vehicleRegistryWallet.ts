@@ -70,3 +70,24 @@ export const rejectVehicleRegistration = async (requestId: string, denyReason: s
         throw error; // optionally re-throw to handle upstream
     }
 }
+
+export const fetchVehicleCertificate = async (tokenId: string) => {
+    try {
+        const { account } = await getWalletClient();
+        const publicClient = getPublicClient();
+        if (!publicClient || !account) {
+            throw new Error("Public client or account not available");
+        }
+        const data = await publicClient.readContract({
+            address: "0xc766710e32112df1Eb266C90F5D8aEd2e58784ea",
+            account: account,
+            abi: VehicleRegistryJson.abi,
+            functionName: "fetchVehicleCertificate",
+            args: [tokenId],
+        })
+        return data;
+    } catch (error) {
+        console.error("Error rejecting vehicle registration:", error);
+        throw error; // optionally re-throw to handle upstream
+    }
+}

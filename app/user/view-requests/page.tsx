@@ -37,11 +37,7 @@ export default function MyVehicleRequests() {
   }, [address]);
 
   return (
-    <main className="w-full min-h-screen flex flex-col justify-center items-center gap-4 p-4">
-      <h1 className="text-xl font-semibold">
-        Vehicle Requests (Last 100,000 Blocks)
-      </h1>
-
+    <main className="w-full min-h-screen flex flex-col items-center gap-4 p-4">
       {loading && <p>Loading...</p>}
       {!loading && requests.length === 0 && (
         <p>No requests found in the last 100,000 blocks.</p>
