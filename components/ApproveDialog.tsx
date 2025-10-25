@@ -38,7 +38,9 @@ export default function ApproveDialog({ requestId }: ApproveDialogProps) {
     setStatusMessage(null);
 
     try {
-      const data = await uploadFilesToServer({ vehicleCertificate: file }, "/api/certfile");
+      const formData = new FormData();
+      formData.append("vehicleCertificate", file);
+      const data = await uploadFilesToServer(formData, "/api/certfile");
       const ipfsHash = data.ipfsHash;
       await approveVehicleRegistration(requestId, ipfsHash);
       setStatusMessage("Vehicle approved successfully!");
