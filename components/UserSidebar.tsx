@@ -38,6 +38,11 @@ export function UserSidebar() {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <Link href="/user/request-roles">Request a Role</Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
         <SidebarGroup />

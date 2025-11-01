@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import "./globals.css";
 import { Web3Provider } from "@/Providers";
 import { RolesProvider } from "@/hooks/RolesContext";
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
             {children}
           </RolesProvider>
         </Web3Provider>
+        <Toaster />
       </body>
     </html>
   );
