@@ -29,6 +29,12 @@ export default function Home() {
             Go to Roles Management Page
           </Link>
         )}
+        <Link
+          href="/explorer"
+          className="mb-8 rounded-lg bg-green-600 px-6 py-4 text-white hover:bg-green-700"
+        >
+          Block Explorer Page
+        </Link>
         <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
           Welcome to Vehicle Records
         </h1>
