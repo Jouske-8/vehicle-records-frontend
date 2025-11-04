@@ -9,8 +9,8 @@ export default function RequestLayout({
   return (
     <div className="flex relative">
       <SidebarProvider>
-        <UserSidebar />
-        <SidebarTrigger />
+        {/* <UserSidebar />
+        <SidebarTrigger /> */}
         {children}
       </SidebarProvider>
     </div>  

@@ -9,8 +9,8 @@ export default function RequestLayout({
   return (
     <div className="flex h-full w-full relative">
       <SidebarProvider>
-        <AdminSidebar/>
-        <SidebarTrigger />
+        {/* <AdminSidebar/>
+        <SidebarTrigger /> */}
         {children}
       </SidebarProvider>
     </div>  
